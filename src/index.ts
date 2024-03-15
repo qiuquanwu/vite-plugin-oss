@@ -110,5 +110,5 @@ const VitePluginOSS = (config: Options) => {
 }
 
 // 导出 VitePluginOSS
-export default VitePluginOSS as (config: Options) => any;
+export default VitePluginOSS;
 

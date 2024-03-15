@@ -13,7 +13,7 @@ export default defineConfig({
 	// 输出目录
 	outDir: 'dist',
 	// 格式
-	format: ['cjs', 'esm'],
+	format: [ 'esm'],
 	// 入口文件
 	entry: ['src/index.ts'],
 	// 排除vite
