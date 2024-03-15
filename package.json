@@ -1,5 +1,5 @@
 {
-  "name": "@qqw/vite-plugin-oss",
+  "name": "@isfive/vite-plugin-oss",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.mjs",

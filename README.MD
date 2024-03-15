@@ -3,7 +3,7 @@ vite插件：将打包后的文件上传到oss
 ## 安装
 
 ```bash
-npm install @qqw/vite-plugin-oss --save-dev
+npm install @isfive/vite-plugin-oss --save-dev
 ```
 
 ## 使用方法
@@ -11,8 +11,8 @@ npm install @qqw/vite-plugin-oss --save-dev
 ```ts
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import VitePluginOSS,{BaiduResolve} from "@qqw/vite-plugin-oss"
-import type {BOSConfig} from "@qqw/vite-plugin-oss"
+import VitePluginOSS,{BaiduResolve} from "@isfive/vite-plugin-oss"
+import type {BOSConfig} from "@isfive/vite-plugin-oss"
 
 const config: BOSConfig = {
   endpoint: "https://xxx.bcebos.com", //传入Bucket所在区域域名
