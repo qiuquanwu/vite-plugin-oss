@@ -8,6 +8,7 @@ import { globSync } from "glob";
 import path from "path";
 // 导入 Options 类型，用于声明配置参数
 import type { Options } from "./types";
+import IClient from "./IClient";
 // 导出 resolver 中的所有内容
 export * from "./resolver"
 // 导出 types 中的所有内容
@@ -30,13 +31,23 @@ const handleIgnore = (
   }
 };
 // 定义 VitePluginOSS 函数，用于处理上传OSS操作
+/**
+ * 
+ * @param config 插件入参
+ * @param {IClient} config.client - 上传客户端类
+ * @param {boolean} config.enabled - 是否开启上传
+ * @param {string[]} [config.ignore] - 忽略文件数组
+ * @param {boolean} [config.overwrite] - 是否覆盖原文件
+ * @param {string} [config.base] - 对象存储路径前缀
+ * @returns 
+ */
 const VitePluginOSS = (config: Options) => {
   // 获取配置参数
-  const { client, enabled, ignore = [], overwrite = true } = config;
+  const { client, enabled, ignore = [], overwrite = true,base="/" } = config;
   // 打印配置参数
   console.log("进入插件", config);
   // 设置基础路径
-  let baseConfig = "/";
+  let baseConfig = base;
   // 设置构建路径
   let buildConfig = {} as any;
   // 返回插件对象

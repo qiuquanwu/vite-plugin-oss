@@ -17,5 +17,8 @@ export default defineConfig({
 	// 入口文件
 	entry: ['src/index.ts'],
 	// 排除vite
-	external:['vite']
+	external:['vite'],
+	// 保留注释
+	keepNames: true,
+	sourcemap: true,
 })
