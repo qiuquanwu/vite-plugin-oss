@@ -17,6 +17,12 @@ class BOSClint implements IClient {
     // 创建百度云客户端
     this.client = new BosClient(client);
   }
+  beforeUpload(){
+    console.log("BOSClient上传前");
+  }
+  afterUpload(){
+    console.log("BOSClient上传后");
+  }
   // 打印BOSClient
   info() {
     console.log("BOSClient");

@@ -12,6 +12,7 @@ import type { Options } from "./types";
 export * from "./resolver"
 // 导出 types 中的所有内容
 export * from "./types"
+export * as IClient from "./IClient";
 // 定义 handleIgnore 函数，用于处理忽略规则
 const handleIgnore = (
   ignore: string[],
