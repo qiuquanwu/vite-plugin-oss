@@ -13,28 +13,34 @@ export type BOSConfig = {
   };
 };
 
-export type Config = AliOSSConfig | BOSConfig;
+export type Config = AliOSSConfig | BOSConfig | QiNiuConfig;
 
 export type Options = {
-  base?:string; //对象存储路径前缀
-  overwrite?:boolean;//是否覆盖原文件
+  base?: string; //对象存储路径前缀
+  overwrite?: boolean; //是否覆盖原文件
   ignore?: string[]; //忽略文件数组
-  client: IClient;//上传客户端类
-  enabled: boolean;//是否开启上传
+  client: IClient; //上传客户端类
+  enabled: boolean; //是否开启上传
 };
-
 
 export type UploadParameter = {
   // 是否覆盖
-  overwrite:boolean;
+  overwrite: boolean;
   // 文件完整路径
-  fileFullPath:string;
+  fileFullPath: string;
   // 文件相对路径
-  filePath:string;
+  filePath: string;
   // oss路径
-  ossFilePath:string;
+  ossFilePath: string;
   // 完成时路径
-  completePath:string
+  completePath: string;
   // 输出路径
-  output:string
-}
+  output: string;
+};
+
+export type QiNiuConfig = {
+  bucket: string;
+  accessKey: string;
+  secretKey: string;
+  overwrite?: boolean;
+};
