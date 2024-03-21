@@ -43,4 +43,11 @@ export type QiNiuConfig = {
   accessKey: string;
   secretKey: string;
   overwrite?: boolean;
+  zone:
+    | "huadong"
+    | "huadong2"
+    | "huabei"
+    | "huanan"
+    | "beimei"
+    | "Southeast-Asia";
 };
