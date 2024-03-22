@@ -13,32 +13,38 @@ class QiNiuClient implements IClient {
       overwrite = true,
       zone = "huanan",
     } = config;
-    var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
-    this.client = mac;
-    this.bucket = bucket;
-    switch (zone) {
-      case "huadong":
-        this.zone = qiniu.zone.Zone_z0;
-        break;
-      case "huadong2":
-        this.zone = qiniu.zone.Zone_cn_east_2;
-        break;
-      case "huabei":
-        this.zone = qiniu.zone.Zone_z1;
-        break;
-      case "huanan":
-        this.zone = qiniu.zone.Zone_z2;
-        break;
-      case "beimei":
-        this.zone = qiniu.zone.Zone_na0;
-        break;
-      case "Southeast-Asia":
-        this.zone = qiniu.zone.Zone_as0;
-        break;
-      default:
-        break;
+
+    try {
+      var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
+      this.client = mac;
+      this.bucket = bucket;
+      switch (zone) {
+        case "huadong":
+          this.zone = qiniu.zone.Zone_z0;
+          break;
+        case "huadong2":
+          this.zone = qiniu.zone.Zone_cn_east_2;
+          break;
+        case "huabei":
+          this.zone = qiniu.zone.Zone_z1;
+          break;
+        case "huanan":
+          this.zone = qiniu.zone.Zone_z2;
+          break;
+        case "beimei":
+          this.zone = qiniu.zone.Zone_na0;
+          break;
+        case "Southeast-Asia":
+          this.zone = qiniu.zone.Zone_as0;
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      throw new Error("qiniu config error");
     }
   }
+
   async upload({
     overwrite,
     filePath,
