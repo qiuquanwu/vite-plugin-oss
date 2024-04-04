@@ -4,9 +4,10 @@ import IClient from "./IClient";
 import AliOSSClient from "./alioss";
 // 导入BOSClint类型
 import BOSClint from "./bos";
+import CosClient from "./cos";
 import QiNiuClient from "./qiniu";
 // 导入AliOSSConfig和BOSConfig类型
-import type { AliOSSConfig, BOSConfig, QiNiuConfig } from "./types";
+import type { AliOSSConfig, BOSConfig, CosConfig, QiNiuConfig } from "./types";
 
 // 导出AliOSSResolve函数，参数为AliOSSConfig类型，返回值为IClient类型
 /**
@@ -32,4 +33,9 @@ export const BaiduResolve = (config: BOSConfig): IClient => {
 export const QiNiuResolve = (config: QiNiuConfig): IClient => {
   // 返回一个新的BOSClint实例
   return new QiNiuClient(config);
+};
+
+export const CosResolve = (config: CosConfig): IClient => {
+  // 返回一个新的BOSClint实例
+  return new CosClient(config);
 };

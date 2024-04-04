@@ -51,3 +51,14 @@ export type QiNiuConfig = {
     | "beimei"
     | "Southeast-Asia";
 };
+
+export type CosConfig = {
+  // 用户的 SecretId
+  SecretId: string;
+  //   用户的 SecretKey
+  SecretKey: string;
+  //   存储桶的名称，命名规则为 BucketName-APPID，此处填写的存储桶名称必须为此格式
+  Bucket: string;
+  //   存储桶所在地域
+  Region: string;
+};

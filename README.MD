@@ -36,6 +36,18 @@ export default defineConfig({
 })
 
 ```
+百度云上传配置
+```ts
+export type BOSConfig = {
+  endpoint: string; //传入Bucket所在区域域名
+  bucket: string;
+  credentials: {
+    ak: string; //您的AccessKey
+    sk: string; //您的SecretAccessKey
+  };
+};
+```
+
 - 阿里云对象存储
 ```ts
 import { defineConfig } from 'vite'
@@ -56,6 +68,80 @@ export default defineConfig({
   })],
 })
 ```
+阿里云上传配置
+```ts
+    interface Options {
+        /** access secret you create */
+        accessKeyId: string;
+        /** access secret you create */
+        accessKeySecret: string;
+        /** used by temporary authorization */
+        stsToken?: string | undefined;
+        /** the default bucket you want to access If you don't have any bucket, please use putBucket() create one first. */
+        bucket?: string | undefined;
+        /** oss region domain. It takes priority over region. */
+        endpoint?: string | undefined;
+        /** the bucket data region location, please see Data Regions, default is oss-cn-hangzhou. */
+        region?: string | undefined;
+        /** access OSS with aliyun internal network or not, default is false. If your servers are running on aliyun too, you can set true to save lot of money. */
+        internal?: boolean | undefined;
+        /** instruct OSS client to use HTTPS (secure: true) or HTTP (secure: false) protocol. */
+        secure?: boolean | undefined;
+        /** instance level timeout for all operations, default is 60s */
+        timeout?: string | number | undefined;
+        /** use custom domain name */
+        cname?: boolean | undefined;
+        /** use time (ms) of refresh STSToken interval it should be less than sts info expire interval, default is 300000ms(5min) when sts info expires. */
+        refreshSTSTokenInterval?: number;
+        /** used by auto set stsToken、accessKeyId、accessKeySecret when sts info expires. return value must be object contains stsToken、accessKeyId、accessKeySecret */
+        refreshSTSToken?: () => Promise<{ accessKeyId: string; accessKeySecret: string; stsToken: string }>;
+    }
+```
+
+- 七牛云对象存储
+
+
+```ts
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import VitePluginOSS,{QiNiuResolve} from "@isfive/vite-plugin-oss"
+import type {QiNiuConfig} from "@isfive/vite-plugin-oss"
+console.log(typeof VitePluginOSS)
+const config: QiNiuConfig = {
+  bucket: xxx;
+  accessKey: xxxx;
+  secretKey: xxxx;
+  overwrite: true;
+  zone: "huadong"
+}
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [vue(),VitePluginOSS({
+    overwrite:true,
+    enabled:true,
+    client:QiNiuResolve(config),
+  })],
+})
+```
+七牛上传配置
+```ts
+export type QiNiuConfig = {
+  bucket: string;
+  accessKey: string;
+  secretKey: string;
+  overwrite?: boolean;
+  zone:
+    | "huadong"
+    | "huadong2"
+    | "huabei"
+    | "huanan"
+    | "beimei"
+    | "Southeast-Asia";
+};
+```
+
+
+
 - 自定义上传
 
 ```ts
